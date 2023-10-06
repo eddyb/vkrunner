@@ -134,7 +134,7 @@ pub extern "C" fn vr_source_add_token_replacement(
 
 #[no_mangle]
 pub extern "C" fn vr_source_free(source: *mut Source) {
-    unsafe { Box::from_raw(source) };
+    unsafe { drop(Box::from_raw(source)); };
 }
 
 #[cfg(test)]

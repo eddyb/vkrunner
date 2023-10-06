@@ -2119,7 +2119,7 @@ pub extern "C" fn vr_script_load(
 
 #[no_mangle]
 pub extern "C" fn vr_script_free(script: *mut Script) {
-    unsafe { Box::from_raw(script) };
+    unsafe { drop(Box::from_raw(script)); };
 }
 
 #[cfg(test)]

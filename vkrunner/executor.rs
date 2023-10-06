@@ -358,7 +358,7 @@ pub extern "C" fn vr_executor_execute_script(
 
 #[no_mangle]
 pub extern "C" fn vr_executor_free(executor: *mut Executor) {
-    unsafe { Box::from_raw(executor) };
+    unsafe { drop(Box::from_raw(executor)); };
 }
 
 #[cfg(test)]
