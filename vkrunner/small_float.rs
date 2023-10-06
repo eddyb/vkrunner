@@ -48,7 +48,7 @@ pub fn load_unsigned(part: u32, e_bits: u32, m_bits: u32) -> f64 {
 pub fn load_signed(part: u32, e_bits: u32, m_bits: u32) -> f64 {
     let res = load_unsigned(part, e_bits, m_bits);
 
-    if res != f64::NAN && (part & (1 << (e_bits + m_bits))) != 0 {
+    if !res.is_nan() && (part & (1 << (e_bits + m_bits))) != 0 {
         -res
     } else {
         res
